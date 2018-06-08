@@ -2,8 +2,11 @@ package com.endofmaster.commons.util.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
+
 /**
  * @author YQ.Huang
+ * @update ZM.Wang
  */
 public abstract class JsonUtils {
 
@@ -22,6 +25,15 @@ public abstract class JsonUtils {
             return objectMapper.writeValueAsString(object);
         } catch (Exception e) {
             throw new JsonException(e);
+        }
+    }
+
+    public static boolean isJson(String json) {
+        try {
+            objectMapper.readTree(json);
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 }
