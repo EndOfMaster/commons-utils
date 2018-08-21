@@ -15,6 +15,7 @@ public class DateUtil {
 
     /**
      * 从一个时间区间获取中间所有的日期
+     *
      * @param start 开始
      * @param end   结束
      * @return date的list
@@ -103,6 +104,15 @@ public class DateUtil {
         LocalDate localDate1 = date2LocalDate(date1);
         LocalDate localDate2 = date2LocalDate(date2);
         return compareByDate(localDate1, localDate2);
+    }
+
+    /**
+     * 比较两个时间区间总共含有几天
+     */
+    public static int compareDayByDate(Date date1, Date date2) {
+        LocalDate localDate1 = date2LocalDate(date1);
+        LocalDate localDate2 = date2LocalDate(date2);
+        return localDate2.compareTo(localDate1) + 1;
     }
 
     public static boolean compareByDate(LocalDate date1, LocalDate date2) {
