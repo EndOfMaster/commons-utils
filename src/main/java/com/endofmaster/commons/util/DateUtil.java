@@ -1,13 +1,38 @@
 package com.endofmaster.commons.util;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.time.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 /**
  * @author ZM.Wang
  */
 public class DateUtil {
+
+    /**
+     * 从一个时间区间获取中间所有的日期
+     * @param start 开始
+     * @param end   结束
+     * @return date的list
+     */
+    public static List<Date> getDatesOfDateRange(Date start, Date end) {
+        LocalDate localDate1 = date2LocalDate(start);
+        LocalDate localDate2 = date2LocalDate(end);
+        int difference = localDate2.compareTo(localDate1);
+        System.err.println(difference);
+        if (difference == 0) {
+            return Collections.singletonList(start);
+        }
+        List<Date> dates = new ArrayList<>();
+        for (int i = 0; i <= difference; i++) {
+            dates.add(localDate2Date(localDate1.plusDays(i)));
+        }
+        return dates;
+    }
 
     public static Date getLastDayStart() {
         return getLastDay(LocalTime.MIN);
@@ -51,6 +76,12 @@ public class DateUtil {
         LocalDate lastDay = LocalDate.now().plusDays(plusDay);
         LocalDateTime lastDayStart = LocalDateTime.of(lastDay, localTime);
         return localDateTime2Date(lastDayStart);
+    }
+
+    public static Date localDate2Date(LocalDate localDate) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
+        return Date.from(zdt.toInstant());
     }
 
     public static Date localDateTime2Date(LocalDate localDate, LocalTime localTime) {
