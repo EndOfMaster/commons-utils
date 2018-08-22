@@ -24,7 +24,6 @@ public class DateUtil {
         LocalDate localDate1 = date2LocalDate(start);
         LocalDate localDate2 = date2LocalDate(end);
         int difference = localDate2.compareTo(localDate1);
-        System.err.println(difference);
         if (difference == 0) {
             return Collections.singletonList(start);
         }
