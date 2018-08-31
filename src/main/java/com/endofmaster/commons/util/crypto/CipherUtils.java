@@ -8,14 +8,27 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.util.zip.CRC32;
 
 /**
  * @author YQ.Huang
+ * @update ZM.Wang
  */
 public class CipherUtils {
+
+    public static long crc32(String data) {
+        if (data == null) {
+            return -1;
+        }
+        byte bytes[] = data.getBytes(StandardCharsets.UTF_8);
+        CRC32 crc32 = new CRC32();
+        crc32.update(bytes, 0, bytes.length);
+        return crc32.getValue();
+    }
 
     public static byte[] decryptHex(byte[] key, String hex, String algorithm, String transform) throws CryptoException {
         try {
