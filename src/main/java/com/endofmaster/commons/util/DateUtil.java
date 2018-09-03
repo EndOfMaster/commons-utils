@@ -22,7 +22,7 @@ public class DateUtil {
     public static List<Date> getDatesOfDateRange(Date start, Date end) {
         LocalDate localDate1 = date2LocalDate(start);
         LocalDate localDate2 = date2LocalDate(end);
-        return getLocalDateOfLocalDate(localDate1, localDate2).stream().map(DateUtil::localDate2Date).collect(Collectors.toList());
+        return getLocalDateOfLocalDateRange(localDate1, localDate2).stream().map(DateUtil::localDate2Date).collect(Collectors.toList());
     }
 
     /**
@@ -32,7 +32,7 @@ public class DateUtil {
      * @param end   结束
      * @return localDate的list
      */
-    public static List<LocalDate> getLocalDateOfLocalDate(LocalDate start, LocalDate end) {
+    public static List<LocalDate> getLocalDateOfLocalDateRange(LocalDate start, LocalDate end) {
         int difference = end.compareTo(start);
         if (difference == 0) {
             return Collections.singletonList(start);
