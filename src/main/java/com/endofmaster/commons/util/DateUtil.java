@@ -1,12 +1,11 @@
 package com.endofmaster.commons.util;
 
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author ZM.Wang
@@ -23,15 +22,34 @@ public class DateUtil {
     public static List<Date> getDatesOfDateRange(Date start, Date end) {
         LocalDate localDate1 = date2LocalDate(start);
         LocalDate localDate2 = date2LocalDate(end);
-        int difference = localDate2.compareTo(localDate1);
+        return getLocalDateOfLocalDate(localDate1, localDate2).stream().map(DateUtil::localDate2Date).collect(Collectors.toList());
+    }
+
+    /**
+     * 从一个时间区间获取中间所有的日期
+     *
+     * @param start 开始
+     * @param end   结束
+     * @return localDate的list
+     */
+    public static List<LocalDate> getLocalDateOfLocalDate(LocalDate start, LocalDate end) {
+        int difference = end.compareTo(start);
         if (difference == 0) {
             return Collections.singletonList(start);
         }
-        List<Date> dates = new ArrayList<>();
+        List<LocalDate> dates = new ArrayList<>();
         for (int i = 0; i <= difference; i++) {
-            dates.add(localDate2Date(localDate1.plusDays(i)));
+            dates.add(start.plusDays(i));
         }
         return dates;
+    }
+
+    /**
+     * localDate转时间戳
+     */
+    public static long localDate2Long(LocalDate localDate) {
+        LocalDateTime localDateTime = localDate.atTime(LocalTime.MIN);
+        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
     public static Date getLastDayStart() {
