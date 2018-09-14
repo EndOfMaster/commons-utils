@@ -44,23 +44,14 @@ public class DateUtil {
                 dates.add(end.plusDays(i));
             }
         } else {
-            for (int i = 0; i <= endEpochDay-startEpochDay; i++) {
+            for (int i = 0; i <= endEpochDay - startEpochDay; i++) {
                 dates.add(start.plusDays(i));
             }
         }
         return dates;
     }
 
-    public static void main(String[] args) {
-        LocalDate start = LocalDate.of(2018, 10, 2);
-        LocalDate end = LocalDate.of(2018, 10, 2);
-        List<LocalDate> localDates = getLocalDateOfLocalDateRange(start, end);
-        System.err.println(localDates);
-    }
-
-    /**
-     * localDate转时间戳
-     */
+    /** localDate转时间戳 */
     public static long localDate2Long(LocalDate localDate) {
         LocalDateTime localDateTime = localDate.atTime(LocalTime.MIN);
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
