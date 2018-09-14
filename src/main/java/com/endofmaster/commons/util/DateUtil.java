@@ -33,15 +33,29 @@ public class DateUtil {
      * @return localDate的list
      */
     public static List<LocalDate> getLocalDateOfLocalDateRange(LocalDate start, LocalDate end) {
-        int difference = end.compareTo(start);
-        if (difference == 0) {
+        if (start.equals(end)) {
             return Collections.singletonList(start);
         }
+        long startEpochDay = start.toEpochDay();
+        long endEpochDay = end.toEpochDay();
         List<LocalDate> dates = new ArrayList<>();
-        for (int i = 0; i <= difference; i++) {
-            dates.add(start.plusDays(i));
+        if (startEpochDay > endEpochDay) {
+            for (int i = 0; i <= startEpochDay - endEpochDay; i++) {
+                dates.add(end.plusDays(i));
+            }
+        } else {
+            for (int i = 0; i <= endEpochDay-startEpochDay; i++) {
+                dates.add(start.plusDays(i));
+            }
         }
         return dates;
+    }
+
+    public static void main(String[] args) {
+        LocalDate start = LocalDate.of(2018, 10, 2);
+        LocalDate end = LocalDate.of(2018, 10, 2);
+        List<LocalDate> localDates = getLocalDateOfLocalDateRange(start, end);
+        System.err.println(localDates);
     }
 
     /**
