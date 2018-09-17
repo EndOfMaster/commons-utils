@@ -133,10 +133,31 @@ public class ParamUtils {
      * @return Map，如果content为null则返回null    value为null存""
      */
     public static Map<String, String> parseKvString(String kvString) {
+        return parseKvString(kvString, '&');
+    }
+
+    /**
+     * 将k1=v1,k2=v2形式的字符串解析成Map
+     *
+     * @param kvString k1=v1&k2=v2形式的字符串
+     * @return Map，如果content为null则返回null    value为null存""
+     */
+    public static Map<String, String> parseKvStringByComma(String kvString) {
+        return parseKvString(kvString, ',');
+    }
+
+    /**
+     * 将k1=v1{symbol}k2=v2形式的字符串解析成Map
+     *
+     * @param kvString k1=v1{symbol}k2=v2形式的字符串
+     * @param symbol   符号
+     * @return Map，如果content为null则返回null    value为null存""
+     */
+    public static Map<String, String> parseKvString(String kvString, char symbol) {
         if (kvString == null)
             return null;
         Map<String, String> params = new HashMap<>();
-        String[] keyValuePairs = StringUtils.split(kvString, '&');
+        String[] keyValuePairs = StringUtils.split(kvString, symbol);
         for (String keyValuePair : keyValuePairs) {
             String[] fields = StringUtils.split(keyValuePair, '=');
             if (fields.length != 2) {
@@ -147,6 +168,7 @@ public class ParamUtils {
         }
         return params;
     }
+
 
     /**
      * 从json节点中查找参数如果无值返回null
