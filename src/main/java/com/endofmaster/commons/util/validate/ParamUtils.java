@@ -31,6 +31,21 @@ public class ParamUtils {
     }
 
     /**
+     * 从Map里查找参数，如果不存在返回null
+     *
+     * @param map   参数表
+     * @param param 参数名
+     * @return 参数值
+     */
+    public static String findParamNoEx(Map<String, String> map, String param) {
+        if (map != null && map.containsKey(param)) {
+            return map.get(param);
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 从Map里查找参数并转换成想要的类型，如果不存在抛MissingParamException
      *
      * @param map      参数表
