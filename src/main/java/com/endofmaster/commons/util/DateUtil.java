@@ -30,6 +30,19 @@ public class DateUtil {
      *
      * @param start 开始
      * @param end   结束
+     * @return dateLocal的list
+     */
+    public static List<LocalDate> getLocalDatesOfDateRange(Date start, Date end) {
+        LocalDate localDate1 = date2LocalDate(start);
+        LocalDate localDate2 = date2LocalDate(end);
+        return getLocalDateOfLocalDateRange(localDate1, localDate2);
+    }
+
+    /**
+     * 从一个时间区间获取中间所有的日期
+     *
+     * @param start 开始
+     * @param end   结束
      * @return localDate的list
      */
     public static List<LocalDate> getLocalDateOfLocalDateRange(LocalDate start, LocalDate end) {
