@@ -93,11 +93,11 @@ public class CipherUtils {
 
     public static byte[] decrypt(Key key, byte[] target, String transform, AlgorithmParameters parameters) throws CryptoException {
         try {
-            Cipher cipher = Cipher.getInstance(transform, "BC");
+            Cipher cipher = Cipher.getInstance(transform);
             cipher.init(Cipher.DECRYPT_MODE, key, parameters);
             return cipher.doFinal(target);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | BadPaddingException
-                | IllegalBlockSizeException | NoSuchProviderException | InvalidKeyException | InvalidAlgorithmParameterException e) {
+                | IllegalBlockSizeException | InvalidKeyException | InvalidAlgorithmParameterException e) {
             throw new CryptoException(e);
         }
     }
