@@ -2,6 +2,7 @@ package com.endofmaster.commons.util.json;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
@@ -34,6 +35,9 @@ public abstract class JsonUtils {
     }
 
     public static boolean isJson(String json) {
+        if (StringUtils.isBlank(json)) {
+            return false;
+        }
         try {
             objectMapper.readTree(json);
             return true;
