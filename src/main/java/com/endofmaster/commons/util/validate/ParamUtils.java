@@ -184,6 +184,18 @@ public class ParamUtils {
         return params;
     }
 
+    /**
+     * map变k1=v1&k2=v2
+     * @param params 参数mp
+     * @return k1=v1&k2=v2字符串
+     */
+    public static String buildKvString(Map<String, String> params) {
+        StringBuffer s = new StringBuffer();
+        if (params != null && params.size() > 0) {
+            params.forEach((k, v) -> s.append(k).append("=").append(v).append("&"));
+        }
+        return s.substring(0, s.length() - 1);
+    }
 
     /**
      * 从json节点中查找参数如果无值返回null
