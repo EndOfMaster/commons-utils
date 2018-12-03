@@ -20,15 +20,15 @@ repositories {
 }
 
 dependencies {
-    compile 'commons-codec:commons-codec:1.10'
-    compile 'org.apache.commons:commons-lang3:3.5'
-    compile 'org.slf4j:slf4j-api:1.7.22'
+    compile 'commons-codec:commons-codec:1.11'
+    compile 'org.apache.commons:commons-lang3:3.8.1'
+    compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'dom4j:dom4j:1.6.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    compile 'javax.servlet:javax.servlet-api:4.0.1'
     compile 'org.bouncycastle:bcprov-jdk15on:1.60'
 
-    testCompile 'org.slf4j:slf4j-jdk14:1.7.22'
+    testCompile 'org.slf4j:slf4j-jdk14:1.7.25'
     testCompile 'junit:junit:4.12'
 }
 
