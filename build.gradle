@@ -44,7 +44,7 @@ bintray {
         name = project.name
         userOrg = 'endofmaster'
         licenses = ['Apache-2.0']
-        vcsUrl = "https://gitlab.com/EndOfMaster/${project.name}/"
+        vcsUrl = "https://github.com/EndOfMaster/${project.name}/"
         version {
             name = project.version
         }
