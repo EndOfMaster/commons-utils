@@ -1,6 +1,7 @@
 package com.endofmaster.commons.util.crypto;
 
 import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -35,7 +36,7 @@ public class CipherUtils {
         if (data == null) {
             return -1;
         }
-        byte bytes[] = data.getBytes(StandardCharsets.UTF_8);
+        byte[] bytes = data.getBytes(StandardCharsets.UTF_8);
         CRC32 crc32 = new CRC32();
         crc32.update(bytes, 0, bytes.length);
         return crc32.getValue();
@@ -68,6 +69,11 @@ public class CipherUtils {
                 | IllegalBlockSizeException | InvalidKeyException e) {
             throw new CryptoException(e);
         }
+    }
+
+    public static String wxDataDecrypt(String encryptData, String sessionKey, String iv) throws CryptoException {
+        byte[] dataByte = decrypt(Base64.decodeBase64(sessionKey), Base64.decodeBase64(encryptData), "AES", "AES/CBC/PKCS7Padding", generateIV(Base64.decodeBase64(iv), "AES"));
+        return new String(dataByte);
     }
 
     public static byte[] decrypt(byte[] key, byte[] target, String algorithm, String transform) throws CryptoException {
