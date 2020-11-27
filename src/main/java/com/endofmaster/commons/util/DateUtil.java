@@ -70,6 +70,10 @@ public class DateUtil {
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
+    public static long localDate2Long(LocalDateTime localDateTime) {
+        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    }
+
     public static Date getLastDayStart() {
         return getLastDay(LocalTime.MIN);
     }

@@ -1,35 +1,36 @@
 buildscript {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/central' }
         jcenter()
-    }
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
-group 'com.endofmaster'
-version '1.0.4'
+plugins {
+    id 'maven'
+    id 'java-library'
+    id "com.jfrog.bintray" version "1.8.5"
+}
 
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'com.jfrog.bintray'
+group = 'com.endofmaster'
+version = '1.0.5'
+sourceCompatibility = '1.8'
 
 repositories {
+    maven { url 'https://maven.aliyun.com/repository/central' }
     mavenLocal()
-    jcenter()
 }
 
 dependencies {
-    compile 'commons-codec:commons-codec:1.11'
-    compile 'org.apache.commons:commons-lang3:3.9'
-    compile 'org.slf4j:slf4j-api:1.7.25'
-    compile 'dom4j:dom4j:1.6.1'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
-    compile 'javax.servlet:javax.servlet-api:4.0.1'
-    compile 'org.bouncycastle:bcprov-jdk15on:1.60'
+    api 'commons-codec:commons-codec:1.15'
+    api 'org.apache.commons:commons-lang3:3.11'
+    api 'org.slf4j:slf4j-api:1.7.30'
+    api 'dom4j:dom4j:1.6.1'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    api 'org.bouncycastle:bcprov-jdk15on:1.67'
 
-    testCompile 'org.slf4j:slf4j-jdk14:1.7.25'
-    testCompile 'junit:junit:4.12'
+    testCompileOnly 'org.slf4j:slf4j-jdk14:1.7.30'
+    testCompileOnly 'junit:junit:4.13.1'
 }
 
 bintray {
@@ -38,7 +39,7 @@ bintray {
     configurations = ['archives']
     dryRun = false //[Default: false] Whether to run this as dry-run, without deploying
     publish = true //[Default: false] Whether version should be auto published after an upload
-    override = false //[Default: false] Whether to override version artifacts already published
+    override = true //[Default: false] Whether to override version artifacts already published
     pkg {
         repo = 'maven'
         name = project.name
