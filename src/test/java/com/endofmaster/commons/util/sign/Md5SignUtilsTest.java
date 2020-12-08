@@ -1,7 +1,7 @@
 package com.endofmaster.commons.util.sign;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ public class Md5SignUtilsTest {
 
         String sign = Md5SignUtils.sign(content, "&key=192006250b4c09247ec02edce69f6a2d", "UTF-8");
 
-        Assert.assertEquals("9A0A8659F005D6984697E2CA0A9CF3B7", sign.toUpperCase());
+        Assertions.assertEquals("9A0A8659F005D6984697E2CA0A9CF3B7", sign.toUpperCase());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class Md5SignUtilsTest {
         String content = PresignUtils.createLinkString(params, true);
         String sign = Md5SignUtils.sign(content, "&key=" + "MIIEvQIBADANBgkqhkiG9w0BAQEFAASC", "UTF-8").toUpperCase();
 
-        Assert.assertEquals("appId=wx3e0d4215b7601aaf&nonceStr=DCdKfYopf095h4XOsLwBGLmzYPB1tUyC&package=prepay_id=wx20161008181644ab15d762230996647661&signType=MD5&timeStamp=1475921804", content);
-        Assert.assertEquals("9D78C6547F5FA331C94237A2447972F0", sign);
+        Assertions.assertEquals("appId=wx3e0d4215b7601aaf&nonceStr=DCdKfYopf095h4XOsLwBGLmzYPB1tUyC&package=prepay_id=wx20161008181644ab15d762230996647661&signType=MD5&timeStamp=1475921804", content);
+        Assertions.assertEquals("9D78C6547F5FA331C94237A2447972F0", sign);
     }
 
     /**
@@ -68,6 +68,6 @@ public class Md5SignUtilsTest {
         String sign = "939414adfc5d2bbeba686c0e7f16bbe1";
         String md5Key = "e7syd6pxavvqyc1hnkwd52730ufe9azm";
 
-        Assert.assertTrue(Md5SignUtils.verify(content, sign, md5Key, "UTF-8"));
+        Assertions.assertTrue(Md5SignUtils.verify(content, sign, md5Key, "UTF-8"));
     }
 }

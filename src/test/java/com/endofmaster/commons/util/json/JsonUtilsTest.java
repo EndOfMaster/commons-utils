@@ -1,7 +1,8 @@
 package com.endofmaster.commons.util.json;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author YQ.Huang
@@ -64,7 +65,7 @@ public class JsonUtilsTest {
         Anything anything = new Anything();
         String json = JsonUtils.toJson(anything);
         Anything actual = JsonUtils.fromJson(json, Anything.class);
-        Assert.assertEquals(anything, actual);
+        Assertions.assertEquals(anything, actual);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.endofmaster.commons.util.sign;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class PresignUtilsTest {
 
         String content = PresignUtils.createLinkString(params, true);
 
-        Assert.assertEquals("k1=v1&k2=v2", content);
+        Assertions.assertEquals("k1=v1&k2=v2", content);
     }
 
     @Test
@@ -33,6 +33,6 @@ public class PresignUtilsTest {
 
         String content = PresignUtils.createLinkStringOnlyValueByKey(params);
         System.err.println(content);
-        Assert.assertEquals("k1=v1&k2=v2", content);
+        Assertions.assertEquals("k1=v1&k2=v2", content);
     }
 }

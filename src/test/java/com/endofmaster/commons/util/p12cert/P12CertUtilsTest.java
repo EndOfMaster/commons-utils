@@ -1,8 +1,8 @@
 package com.endofmaster.commons.util.p12cert;
 
 import com.endofmaster.commons.util.sign.RsaSignUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -22,10 +22,10 @@ public class P12CertUtilsTest {
             p12Cert = P12CertUtils.load(in, certPwd.toCharArray());
         }
 
-        Assert.assertEquals(certId, p12Cert.getCertId());
+        Assertions.assertEquals(certId, p12Cert.getCertId());
 
         String sign = RsaSignUtils.sha1Sign("content", p12Cert.getPrivateKey(), "UTF-8");
-        Assert.assertTrue(RsaSignUtils.sha1Verify("content", sign, p12Cert.getPublicKey(), "UTF-8"));
+        Assertions.assertTrue(RsaSignUtils.sha1Verify("content", sign, p12Cert.getPublicKey(), "UTF-8"));
     }
 
 }

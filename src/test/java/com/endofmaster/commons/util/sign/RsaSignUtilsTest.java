@@ -1,7 +1,8 @@
 package com.endofmaster.commons.util.sign;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.security.SignatureException;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class RsaSignUtilsTest {
         String sign = "GOMQaW4XF06pxOuzpQB7UySwuIamI9o4SsvNoY4W6K/nI1P15ixvFeBnPL0VpkwzGp5MREhMM+bNGURYtPZDwYI+azXRlbg7lxLSRowdph4VHfQCB95iuRbNQQC9exTM8kjss+LjNcQbliWOdHP00qMw73PTmR+Fshz59975i4s=";
         String rsaPublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
 
-        Assert.assertTrue(RsaSignUtils.sha1Verify(content, sign, rsaPublicKey, "UTF-8"));
+        Assertions.assertTrue(RsaSignUtils.sha1Verify(content, sign, rsaPublicKey, "UTF-8"));
     }
 
     /**
@@ -69,7 +70,7 @@ public class RsaSignUtilsTest {
         String sign = "iIbnYN7mpeWwQjWx0IxlgmbaVKCbCHSaWZ6k7xeM/Bc5vFcYBI4GXTbgQc9iV0m249cibUNo/WWUH8Vf9cWpUroIFupxRxfBMGl/Qag2EtcltLUhL6VJHN2kork4yLzIx9+hCK28lrqbp43Hke+uKpakLFB05wLVtmT1Y+ua3hc=";
         String rsaPublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB";
 
-        Assert.assertTrue(RsaSignUtils.sha1Verify(content, sign, rsaPublicKey, "UTF-8"));
+        Assertions.assertTrue(RsaSignUtils.sha1Verify(content, sign, rsaPublicKey, "UTF-8"));
     }
 
     /**
@@ -82,7 +83,7 @@ public class RsaSignUtilsTest {
         String target = "F6UTi2Vq3MYr6kA9vMXagqI8pRqTEWOjB+j5dKfdNqhiZKSy4hwdfY1eb/z+LkNuW1g+aQdlPeTmwGYWRutHnG91MHPwxzneIbVB/M/pnZJ0SxCBezp4KDy7dimoST4pWPiTGsiDM4gnPfD8MvHNFroukVyYDFhEAHkQm6ucm4uLUmD5REQATuTFX2a3mmICCi1Uj8pPhi1nHEcYtUBkPr/pLHyS1CnIv0umF2dO2wqIb9lhjz4HSTUG6oLXMdZqagNycxaemvpu+++Ad6sk0Eq9pfkxsywtxa/fsnPkK4hQsdY3VqvQxSOd/PO/Z4MlQHkV6/z/5plkxkzJ79uGGw==";
         String sign = RsaSignUtils.sha256Sign(content, privateKey, "gbk");
 
-        Assert.assertEquals(target, sign);
+        Assertions.assertEquals(target, sign);
     }
 
     @Test
@@ -90,6 +91,6 @@ public class RsaSignUtilsTest {
         String content = "test";
         String sign = "F6UTi2Vq3MYr6kA9vMXagqI8pRqTEWOjB+j5dKfdNqhiZKSy4hwdfY1eb/z+LkNuW1g+aQdlPeTmwGYWRutHnG91MHPwxzneIbVB/M/pnZJ0SxCBezp4KDy7dimoST4pWPiTGsiDM4gnPfD8MvHNFroukVyYDFhEAHkQm6ucm4uLUmD5REQATuTFX2a3mmICCi1Uj8pPhi1nHEcYtUBkPr/pLHyS1CnIv0umF2dO2wqIb9lhjz4HSTUG6oLXMdZqagNycxaemvpu+++Ad6sk0Eq9pfkxsywtxa/fsnPkK4hQsdY3VqvQxSOd/PO/Z4MlQHkV6/z/5plkxkzJ79uGGw==";
         String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqsjhG2YAFMEJRDycU/304CjRHEH5u6zzE+LZ90ModTGygCVaqxsH3IedDrI28qPYQpK+nF7/pKyM0VdqGoijlyq/uqnyoHIYval91vIbT/buYEpzb9/3eE9J/m90AVoMPdli+aZkjwtUuZSH+ULUHyN0fF/USlAtVLA7b17So7fEgiXX2ZHy5DZBH7OrwBfu+kwyKeU5c+eDM8C4ibsOh1tmW4zQzgJfgbQbQMqdVqh4OeMoVtsYcepU2TSNdeUVn+m7cdXGrPST2t3sJlXzwXsR9i//tcLMgzzmIARJynBhVIsNely1lEDTGUu38cMZ4PXGvjW3nehqY5sWcvoGWQIDAQAB";
-        Assert.assertTrue(RsaSignUtils.sha256Verify(content, sign, publicKey, "gbk"));
+        Assertions.assertTrue(RsaSignUtils.sha256Verify(content, sign, publicKey, "gbk"));
     }
 }
