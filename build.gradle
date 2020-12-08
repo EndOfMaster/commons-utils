@@ -30,7 +30,6 @@ dependencies {
     implementation 'org.bouncycastle:bcprov-jdk15on:1.67'
 
     testCompileOnly 'org.slf4j:slf4j-jdk14:1.7.30'
-//    testCompileOnly 'org.junit.vintage:junit-vintage-engine:5.7.0'
     testCompileOnly 'org.junit.jupiter:junit-jupiter:5.7.0'
 
 }
