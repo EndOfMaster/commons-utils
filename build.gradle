@@ -21,13 +21,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'commons-codec:commons-codec:1.15'
-    implementation 'org.apache.commons:commons-lang3:3.11'
-    implementation 'org.slf4j:slf4j-api:1.7.30'
-    implementation 'dom4j:dom4j:1.6.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
-    implementation 'javax.servlet:javax.servlet-api:4.0.1'
-    implementation 'org.bouncycastle:bcprov-jdk15on:1.67'
+    api 'commons-codec:commons-codec:1.15'
+    api 'org.apache.commons:commons-lang3:3.11'
+    api 'org.slf4j:slf4j-api:1.7.30'
+    api 'dom4j:dom4j:1.6.1'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.11.3'
+    api 'javax.servlet:javax.servlet-api:4.0.1'
+    api 'org.bouncycastle:bcprov-jdk15on:1.67'
 
     testCompileOnly 'org.slf4j:slf4j-jdk14:1.7.30'
     testCompileOnly 'org.junit.jupiter:junit-jupiter:5.7.0'
